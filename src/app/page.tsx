@@ -21,8 +21,21 @@ const terminal_data = {
     heading:"Projects",
     info:[
       {
-        subheading: "sh1",
-        data: "data123"
+        subheading: "Personal Website",
+        data: "Currently under development"
+      },
+      {
+        subheading: "sh2",
+        data: "data234"
+      }
+    ]
+  },
+  current_work: {
+    heading:"Currenly Working on",
+    info:[
+      {
+        subheading: "This website",
+        data: "Improving my frontend skills"
       },
       {
         subheading: "sh2",
@@ -33,7 +46,7 @@ const terminal_data = {
 }
 
 export default function Home() {
-  const [terminal_section, set_terminal_section] = useState<"bio" | "projects">("projects");
+  const [terminal_section, set_terminal_section] = useState<"bio" | "projects" | "current_work">("projects");
 
   return(
     <main>
@@ -47,7 +60,7 @@ export default function Home() {
         <div className="terminal-container">
           <button onClick={() => set_terminal_section("bio")}>Bio</button>
           <button onClick={() => set_terminal_section("projects")}>Projects</button>
-          <p>Currently Working On</p>
+          <button onClick={() => set_terminal_section("current_work")}>Currently Working On</button>
           <Terminal 
             heading={terminal_data[terminal_section].heading}
             info={terminal_data[terminal_section].info}
