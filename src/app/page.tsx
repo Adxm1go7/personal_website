@@ -52,19 +52,41 @@ export default function Home() {
     <main>
       <div className="site-container">
         <div className="contact-container">
-          <p>LinkedIn, Github, etc</p>
+          <a href="#" className="contact-link">LinkedIn</a>
+          <span className="contact-divider">/</span>
+          <a href="#" className="contact-link">GitHub</a>
         </div>
         <div className="name">
           <h1>Adam Ornoch</h1>
         </div>
-        <div className="terminal-container">
-          <button onClick={() => set_terminal_section("bio")}>Bio</button>
-          <button onClick={() => set_terminal_section("projects")}>Projects</button>
-          <button onClick={() => set_terminal_section("current_work")}>Currently Working On</button>
-          <Terminal 
-            heading={terminal_data[terminal_section].heading}
-            info={terminal_data[terminal_section].info}
-          />
+        <div className="content-row">
+          <nav className="command-nav">
+            <button
+              className={`command-btn ${terminal_section === "bio" ? "active" : ""}`}
+              onClick={() => set_terminal_section("bio")}
+            >
+              Bio
+            </button>
+            <button
+              className={`command-btn ${terminal_section === "projects" ? "active" : ""}`}
+              onClick={() => set_terminal_section("projects")}
+            >
+              Projects
+            </button>
+            <button
+              className={`command-btn ${terminal_section === "current_work" ? "active" : ""}`}
+              onClick={() => set_terminal_section("current_work")}
+            >
+              Current Work
+            </button>
+          </nav>
+
+          <div className="terminal-container">
+            <Terminal
+              heading={terminal_data[terminal_section].heading}
+              info={terminal_data[terminal_section].info}
+            />
+          </div>
         </div>
       </div>
     </main>
