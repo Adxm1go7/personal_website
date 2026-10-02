@@ -42,11 +42,24 @@ const terminal_data = {
         data: "data234"
       }
     ]
+  },
+  skills: {
+    heading:"Skills",
+    info:[
+      {
+        subheading: "Problem-solving",
+        data: "Some description"
+      },
+      {
+        subheading: "Python",
+        data: "data234"
+      }
+    ]
   }
 }
 
 export default function Home() {
-  const [terminal_section, set_terminal_section] = useState<"bio" | "projects" | "current_work">("projects");
+  const [terminal_section, set_terminal_section] = useState<"bio" | "projects" | "current_work" | "skills">("projects");
 
   return(
     <main>
@@ -78,6 +91,13 @@ export default function Home() {
               onClick={() => set_terminal_section("current_work")}
             >
               Current Work
+            </button>
+
+            <button
+              className={`command-btn ${terminal_section === "skills" ? "active" : ""}`}
+              onClick={() => set_terminal_section("skills")}
+            >
+              Skills
             </button>
           </nav>
 
