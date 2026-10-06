@@ -54,6 +54,16 @@ body {
   padding: clamp(1.25rem, 3vw, 2.5rem);
 }
 
+.page-title{
+  position: absolute;
+  top: clamp(5rem, 12vh, 8rem);   /* clears the fixed navbar */
+  left: var(--page-pad);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
 /* Page layout: nav on top, hero in the middle, socials at the bottom */
 .site-container {
   display: grid;

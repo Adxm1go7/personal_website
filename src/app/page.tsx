@@ -23,7 +23,7 @@ export default function Home() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = PAGES.findIndex((p) => p.id === entry.target.id);
-            if (index !== -1) setActive(index);
+            if (index !== -1) setActive(0);
           }
         });
       },
@@ -83,27 +83,25 @@ export default function Home() {
         </section>
 
         <section id="bio" className="page">
-          <div>
-            <h2>Bio</h2>
-            <p>loths are a Neotropical group of xenarthran mammals constituting the suborder Folivora, 
-              including the extant arboreal tree sloths and extinct terrestrial ground sloths. 
-              Noted for their slowness of movement, tree sloths spend most of their lives hanging 
-              upside down in the trees of the tropical rainforests of South America and Central America. 
-              Sloths are considered to be most closely related to anteaters, together making up the xenarthran order Pilosa.</p>
-          </div>
+
+          <h2 className="page-title">Bio</h2>
+          <p>loths are a Neotropical group of xenarthran mammals constituting the suborder Folivora, 
+            including the extant arboreal tree sloths and extinct terrestrial ground sloths. 
+            Noted for their slowness of movement, tree sloths spend most of their lives hanging 
+            upside down in the trees of the tropical rainforests of South America and Central America. 
+            Sloths are considered to be most closely related to anteaters, together making up the xenarthran order Pilosa.</p>
+
         </section>
 
         <section id="projects" className="page">
-          <div>
-            <h2>Projects</h2>
-            <p>Description</p>
-          </div>
+
+          <h2 className="page-title">Projects</h2>
+          <p>Description</p>
+
         </section>
 
         <section id="skills" className="page">
-          <div>
-            <h2>Skills</h2>
-          </div>
+          <h2 className="page-title">Skills</h2>
         </section>
       </main>
     </>
