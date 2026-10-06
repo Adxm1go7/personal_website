@@ -48,17 +48,12 @@ body {
   height: 100svh;
   scroll-snap-align: start;
   scroll-snap-stop: always;    /* one page per swipe/scroll, no skipping */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(1.25rem, 3vw, 2.5rem);
+  padding: 6vw;
 }
 
 .page-title{
-  position: absolute;
-  top: clamp(5rem, 12vh, 8rem);   /* clears the fixed navbar */
-  left: var(--page-pad);
-  font-size: clamp(3rem, 8vw, 6.5rem);
+  margin-top:13vh;
+  font-size: clamp(3rem, 5vw, 6.5rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -154,4 +149,21 @@ body {
 .contact-divider {
   color: var(--text-muted);
   opacity: 0.5;
+}
+
+.bio-page-container{
+  display:flex;
+  padding-top:2rem;
+  gap: 10rem;
+}
+
+.bio-page-content{
+}
+
+.bio-page-text-container{
+  flex:5;
+}
+
+.bio-page-img-container{
+  flex:3;
 }

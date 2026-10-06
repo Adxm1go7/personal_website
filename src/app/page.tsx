@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 
 const PAGES = [
   { id: "home", label: "Home" },
-  { id: "bio", label: "Bio" },
+  { id: "bio", label: "About Me" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
 ];
@@ -84,13 +84,34 @@ export default function Home() {
 
         <section id="bio" className="page">
 
-          <h2 className="page-title">Bio</h2>
-          <p>loths are a Neotropical group of xenarthran mammals constituting the suborder Folivora, 
-            including the extant arboreal tree sloths and extinct terrestrial ground sloths. 
-            Noted for their slowness of movement, tree sloths spend most of their lives hanging 
-            upside down in the trees of the tropical rainforests of South America and Central America. 
-            Sloths are considered to be most closely related to anteaters, together making up the xenarthran order Pilosa.</p>
+          <h2 className="page-title">About Me</h2>
+          <div className="bio-page-container">
+            <div className="bio-page-content bio-page-text-container">
+              <p>
+                Hey, I’m Adam - an aspiring Software Engineer based in London.<br></br>
 
+                I’ve always enjoyed drafting up creative and functional solutions to problems which naturally led me to programming.
+                I like taking an idea, constructing it into a plan, and turning it into something real
+                that I can use, improve, and learn from.
+
+                My interests are spread across web development and ..., and I’m currently
+                developing my skills across TypeScript, React, Next.js, Python, and SQL. Most of my learning 
+                happens through building projects, experimenting with new technologies, and fixing things
+                that break along the way.
+
+                Outside of work, I enjoy a variety of sports and board games. I enjoy competition, figuring 
+                out why things work the way they do, and learning optimal strategies.
+
+                My Qualities
+                Creative. Thoughtful. ...
+                I’m currently focused on improving my technical skills
+                and looking forward to seeing where it takes me.
+              </p>
+            </div>
+            <div className="bio-page-content bio-page-img-container">
+              <p>Image</p>
+            </div>
+          </div>
         </section>
 
         <section id="projects" className="page">
