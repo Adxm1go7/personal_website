@@ -39,6 +39,8 @@ export default function Home() {
   }, []);
 
   const goTo = (id: string) => {
+    const index = PAGES.findIndex((p) => p.id === id);
+    if (index !== -1) setActive(index);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -52,7 +54,6 @@ export default function Home() {
               key={id}
               href={`#${id}`}
               className={`nav-link ${active === i ? "active" : ""}`}
-              aria-current={active === i ? "page" : undefined}
               onClick={(e) => {
                 e.preventDefault();
                 goTo(id);
@@ -63,20 +64,6 @@ export default function Home() {
           ))}
         </nav>
       </header>
-
-      <nav className="dot-nav" aria-label="Page navigation">
-        {PAGES.map(({ id, label }, i) => (
-          <button
-            key={id}
-            className={`dot ${active === i ? "active" : ""}`}
-            aria-label={`Go to ${label}`}
-            aria-current={active === i ? "page" : undefined}
-            onClick={() => goTo(id)}
-          >
-            <span className="dot-label">{label}</span>
-          </button>
-        ))}
-      </nav>
 
       <main className="site-snap-container" ref={containerRef}>
         <section id="home" className="page">
@@ -98,12 +85,18 @@ export default function Home() {
         <section id="bio" className="page">
           <div>
             <h2>Bio</h2>
+            <p>loths are a Neotropical group of xenarthran mammals constituting the suborder Folivora, 
+              including the extant arboreal tree sloths and extinct terrestrial ground sloths. 
+              Noted for their slowness of movement, tree sloths spend most of their lives hanging 
+              upside down in the trees of the tropical rainforests of South America and Central America. 
+              Sloths are considered to be most closely related to anteaters, together making up the xenarthran order Pilosa.</p>
           </div>
         </section>
 
         <section id="projects" className="page">
           <div>
             <h2>Projects</h2>
+            <p>Description</p>
           </div>
         </section>
 

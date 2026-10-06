@@ -65,9 +65,8 @@ body {
 /* Top right nav */
 .site-header {
   position: fixed;
-  top: 0;
-  right: 0;
   z-index: 10;
+  width: 100%;
   padding: clamp(1.25rem, 3vw, 2.5rem);
 }
 
@@ -94,6 +93,7 @@ body {
 .navbar {
   display: flex;
   gap: clamp(1rem, 2.5vw, 2rem);
+  justify-content: right;
 }
 
 .nav-link {
@@ -101,7 +101,7 @@ body {
   letter-spacing: 0.02em;
 }
 
-.active{
+.nav-link.active{
   color: var(--wrx_wheel);
 }
 
