@@ -18,12 +18,40 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden; /* the snap container scrolls, not the body */
+}
 
 body {
   background: var(--background);
   background-size: 28px 28px;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Helvetica, sans-serif;
+}
+
+.snap-container {
+  height: 100svh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  scrollbar-width: none;       /* hide scrollbar (Firefox) */
+}
+
+.snap-container::-webkit-scrollbar {
+  display: none;               /* hide scrollbar (Chrome/Safari) */
+}
+
+.page {
+  position: relative;
+  height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;    /* one page per swipe/scroll, no skipping */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 /* Page layout: nav on top, hero in the middle, socials at the bottom */
@@ -36,25 +64,30 @@ body {
 
 /* Top right nav */
 .site-header {
-  display: flex;
-  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
 }
+
 
 /* Centered hero */
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
 }
 
 /* Bottom left socials */
 .contact-container {
+  position: absolute;
+  left: clamp(1.25rem, 3vw, 2.5rem);
+  bottom: clamp(1.25rem, 3vw, 2.5rem);
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  justify-self: start;
   font-size: 0.95rem;
 }
 
@@ -64,13 +97,16 @@ body {
 }
 
 .nav-link {
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   letter-spacing: 0.02em;
+}
+
+.active{
+  color: var(--wrx_wheel);
 }
 
 
 .name {
-  font-family: var(--font-sans);
   font-weight: 700;
   font-size: clamp(4rem, 8vw, 16rem); /* min, preferred, max*/
   letter-spacing: -0.03em;
@@ -79,7 +115,6 @@ body {
 }
 
 .role{
-  font-family: var(--font-sans);
   font-weight: 700;
   font-size: clamp(1.5rem, 2vw, 3rem);
   letter-spacing: -0.03em;
@@ -91,7 +126,7 @@ body {
 
 .front-page-description {
   margin-top: 1.25rem;
-  max-width: 34ch;
+  max-width: 50ch;
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   line-height: 1.6;
   color: var(--mute_grey);
