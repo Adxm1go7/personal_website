@@ -78,10 +78,11 @@ body {
 
 /* Centered hero */
 .hero {
+  height: 100%;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
 }
 
 /* Bottom left socials */
