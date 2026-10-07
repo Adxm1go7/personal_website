@@ -9,6 +9,7 @@
   --border: rgba(255, 255, 255, 0.09);
   --mute_grey: #9A9AA5;
   --blue-soft: #6C85FF;
+  --page-pad: 1rem;
 }
 
 @theme inline {
@@ -168,3 +169,66 @@ body {
 .bio-page-img-container{
   flex:3;
 }
+
+
+
+.carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+  padding: 0 4rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  height: clamp(18rem, 50vh, 30rem);
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  transition: opacity 0.3s ease, flex-basis 0.3s ease;
+}
+
+.project-card.active {
+  flex: 0 0 34%;
+  opacity: 1;
+}
+
+.project-card.side {
+  flex: 0 0 24%;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  list-style: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.75rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  color: var(--accent);
+}
+
+.carousel-arrow.left  { left: var(--page-pad); }
+.carousel-arrow.right { right: calc(var(--page-pad) + 1.5rem); } /* clears the dot nav */

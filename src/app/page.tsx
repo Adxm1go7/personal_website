@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react"
+import ProjectsCarousel from "./components/ProjectsCarousel";
 
 const PAGES = [
   { id: "home", label: "Home" },
@@ -115,10 +116,8 @@ export default function Home() {
         </section>
 
         <section id="projects" className="page">
-
           <h2 className="page-title">Projects</h2>
-          <p>Description</p>
-
+          <ProjectsCarousel />
         </section>
 
         <section id="skills" className="page">
