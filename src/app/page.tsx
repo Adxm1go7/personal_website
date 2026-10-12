@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import ProjectsCarousel from "./components/ProjectsCarousel";
+import SkillsField from "./components/SkillsField";
 
 const PAGES = [
   { id: "home", label: "Home" },
@@ -122,6 +123,7 @@ export default function Home() {
 
         <section id="skills" className="page">
           <h2 className="page-title">Skills</h2>
+          <SkillsField />
         </section>
       </main>
     </>

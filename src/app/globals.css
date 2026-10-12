@@ -53,7 +53,7 @@ body {
 }
 
 .page-title{
-  margin-top:13vh;
+  margin-top:9vh;
   font-size: clamp(3rem, 5vw, 6.5rem);
   font-weight: 700;
   line-height: 1;
@@ -232,3 +232,67 @@ body {
 
 .carousel-arrow.left  { left: var(--page-pad); }
 .carousel-arrow.right { right: calc(var(--page-pad) + 1.5rem); } /* clears the dot nav */
+
+/* Fills the page; clusters are placed inside it by % */
+.skills-field {
+  position: absolute;
+  inset: 0;
+}
+
+.skill-cluster {
+  --size: clamp(13rem, min(24vw, 38vh), 24rem);
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  transform: translate(-50%, -50%);  /* x/y refer to the center of the cluster */
+}
+
+/* Lines sit behind everything else */
+.cluster-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cluster-lines line {
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Group name in the middle */
+.cluster-name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--accent);
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* Individual skills */
+.cluster-skills {
+  list-style: none;
+}
+
+.skill {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: var(--bg);       /* opaque, so lines appear to end at the label */
+  color: var(--mute_grey);
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  white-space: nowrap;
+  z-index: 1;
+}
