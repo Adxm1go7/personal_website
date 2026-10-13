@@ -158,8 +158,8 @@ body {
   padding: 0.12em 0;
   border: none;
   background:
-    linear-gradient(180deg, var(--text) 0%, var(--text) 15%, transparent 80%),
-    url("/earth.jpg") center 65% / cover no-repeat;
+    linear-gradient(180deg, var(--text) 0%, var(--text) 40%, transparent 90%),
+    url("/b4.jpg") center 65% / cover no-repeat;
   background-clip: text;
 
   display: inline-block;          /* the image maps to the text box, not the full screen width */
