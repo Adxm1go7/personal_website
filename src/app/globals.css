@@ -1,20 +1,37 @@
 @import "tailwindcss";
 
+
+
 :root {
   --background: #121214;
   --foreground: #F2F2F5;
   --wrx: #0022cc;
   --wrx_wheel: #FFDF00;
-  --accent: #ffb454;
+  --accent2: #ffb454;
   --border: rgba(255, 255, 255, 0.09);
   --mute_grey: #9A9AA5;
   --blue-soft: #6C85FF;
   --page-pad: 1rem;
+
+  --font-main: white;
+  --font-muted: gray;
+  --accent2: orange;
+
+  --bg: #121214;
+
+  --text: #F6F3EA;          /* headings, your name: warm white */
+  --text-muted: #A9A79E;    /* descriptions, nav links, socials */
+  --text-faint: #6F6D66;    /* dividers, hints, disabled (decorative only) */
+
+  --accent: #FFDF00;        /* your exact yellow: role, active states, hover */
+  --accent-soft: #E8C94A;   /* optional calmer yellow for small text or borders */ 
+
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-main: var(--font-sora);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -27,8 +44,9 @@ html, body {
 body {
   background: var(--background);
   background-size: 28px 28px;
-  color: var(--foreground);
-  font-family: var(--font-sans), Helvetica, sans-serif;
+  color: var(--text);
+  font-family: var(--font-main), Helvetica, sans-serif;
+  letter-spacing: 0.04rem;
 }
 
 .snap-container {
@@ -50,6 +68,7 @@ body {
   scroll-snap-align: start;
   scroll-snap-stop: always;    /* one page per swipe/scroll, no skipping */
   padding: 6vw;
+  color: var(--text-muted);
 }
 
 .page-title{
@@ -58,6 +77,7 @@ body {
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
+  color: var(--text);
 }
 
 /* Page layout: nav on top, hero in the middle, socials at the bottom */
@@ -80,6 +100,7 @@ body {
 /* Centered hero */
 .hero {
   height: 100%;
+  width: 100%;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -97,6 +118,10 @@ body {
   font-size: 0.95rem;
 }
 
+.contact-link{
+  color: var(--text-muted);
+}
+
 .navbar {
   display: flex;
   gap: clamp(1rem, 2.5vw, 2rem);
@@ -106,28 +131,47 @@ body {
 .nav-link {
   font-size: 1.5rem;
   letter-spacing: 0.02em;
+  color: var(--text-muted);
 }
 
 .nav-link.active{
-  color: var(--wrx_wheel);
+  color: var(--accent);
 }
 
+
+/* The full-width band takes over the lines and solid background */
+.name-band {
+  width: 100vw;
+  padding: 0.25em 0 0.35em;
+  border-top: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+  background: var(--bg);
+  text-align: center;
+}
 
 .name {
   font-weight: 700;
   font-size: clamp(4rem, 8vw, 16rem); /* min, preferred, max*/
-  letter-spacing: -0.03em;
   text-align: center;
-  color: var(--blue-soft);
+  color: transparent;
+
+  padding: 0.12em 0;
+  border: none;
+  background:
+    linear-gradient(180deg, var(--text) 0%, var(--text) 15%, transparent 80%),
+    url("/earth.jpg") center 65% / cover no-repeat;
+  background-clip: text;
+
+  display: inline-block;          /* the image maps to the text box, not the full screen width */
 }
 
 .role{
   font-weight: 700;
   font-size: clamp(1.5rem, 2vw, 3rem);
-  letter-spacing: -0.03em;
   line-height: 1;
   text-align: center;
-  color: var(--wrx_wheel);
+  color: var(--accent);
+  padding-top:2rem;
   margin: 0;
 }
 
@@ -136,7 +180,7 @@ body {
   max-width: 50ch;
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   line-height: 1.6;
-  color: var(--mute_grey);
+  color: var(--text-muted);
 }
 
 /* Bottom left socials */
@@ -149,7 +193,7 @@ body {
 }
 
 .contact-divider {
-  color: var(--text-muted);
+  color: var(--text-faint);
   opacity: 0.5;
 }
 

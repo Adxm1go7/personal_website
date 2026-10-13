@@ -70,7 +70,9 @@ export default function Home() {
       <main className="site-snap-container" ref={containerRef}>
         <section id="home" className="page">
           <div className="hero">
-            <h1 className="name">Adam Ornoch</h1>
+            <div className="name-band">
+              <h1 className="name">Adam Ornoch</h1>
+            </div>
             <h2 className="role">Full-Stack Developer</h2>
             <p className="front-page-description">
               This is going to be a short 2 line description that says something
