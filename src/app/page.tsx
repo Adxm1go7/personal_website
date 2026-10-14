@@ -11,6 +11,12 @@ const PAGES = [
   { id: "skills", label: "Skills" },
 ];
 
+const bioImages = [
+  { src: "/subaru_sketch.webp", alt: "Picture of a car (WRX STI)" },
+  { src: "/catan.webp", alt: "Picture of a car (WRX STI)" },
+  { src: "/subaru_sketch.webp", alt: "Picture of a car (WRX STI)" },
+];
+
 export default function Home() {
   const containerRef = useRef<HTMLElement>(null); 
   const [active, setActive] = useState(0);
@@ -97,15 +103,12 @@ export default function Home() {
                 I’ve always enjoyed drafting up creative and functional solutions to problems which naturally led me to programming.
                 I like taking an idea, constructing it into a plan, and turning it into something real
                 that I can use, improve, and learn from.
-
                 My interests are spread across web development and ..., and I’m currently
                 developing my skills across TypeScript, React, Next.js, Python, and SQL. Most of my learning 
                 happens through building projects, experimenting with new technologies, and fixing things
                 that break along the way.
-
                 Outside of work, I enjoy a variety of sports and board games. I enjoy competition, figuring 
                 out why things work the way they do, and learning optimal strategies.
-
                 My Qualities
                 Creative. Thoughtful. ...
                 I’m currently focused on improving my technical skills
@@ -113,7 +116,16 @@ export default function Home() {
               </p>
             </div>
             <div className="bio-page-content bio-page-img-container">
-              <p>Image</p>
+              <div className="bio-track">
+                {[...bioImages, ...bioImages].map((img, i) => (
+                  <img
+                    key={i}
+                    src={img.src}
+                    alt={i < bioImages.length ? img.alt : ""}
+                    aria-hidden={i >= bioImages.length}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
