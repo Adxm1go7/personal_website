@@ -76,7 +76,17 @@ html {
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
-  color: var(--text);
+  color: transparent;
+
+  background:
+    linear-gradient(180deg, var(--text) 0%, var(--text) 40%, transparent 100%),
+    url("/b4.jpg") center 65% / cover no-repeat;
+  background-clip: text;
+}
+
+.link-icon{
+  max-width:70px;
+  filter: brightness(0.7);
 }
 
 .projects-page-title{

@@ -51,9 +51,12 @@ export default function Home() {
           </div>
 
           <div className="contact-container">
-            <a href="#" className="contact-link">LinkedIn</a>
-            <span className="contact-divider">/</span>
-            <a href="#" className="contact-link">GitHub</a>
+            <a href="#" className="contact-link">
+              <img className="link-icon" src="./linkedin-icon.png" alt="LinkedIn"></img>
+            </a>
+            <a href="#" className="contact-link">
+              <img className="link-icon" src="./github-icon2.webp" alt="Github"></img>
+            </a>
           </div>
         </section>
 
