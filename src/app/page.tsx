@@ -93,27 +93,28 @@ export default function Home() {
         </section>
 
         <section id="bio" className="page">
-
-          <h2 className="page-title">About Me</h2>
           <div className="bio-page-container">
             <div className="bio-page-content bio-page-text-container">
-              <p>
-                Hey, I’m Adam - an aspiring Software Engineer based in London.<br></br>
+              <h2 className="page-title">About Me</h2>
+              <div>
+                <p>
+                  Hey, I’m Adam - an aspiring Software Engineer based in London.<br></br>
 
-                I’ve always enjoyed drafting up creative and functional solutions to problems which naturally led me to programming.
-                I like taking an idea, constructing it into a plan, and turning it into something real
-                that I can use, improve, and learn from.
-                My interests are spread across web development and ..., and I’m currently
-                developing my skills across TypeScript, React, Next.js, Python, and SQL. Most of my learning 
-                happens through building projects, experimenting with new technologies, and fixing things
-                that break along the way.
-                Outside of work, I enjoy a variety of sports and board games. I enjoy competition, figuring 
-                out why things work the way they do, and learning optimal strategies.
-                My Qualities
-                Creative. Thoughtful. ...
-                I’m currently focused on improving my technical skills
-                and looking forward to seeing where it takes me.
-              </p>
+                  I’ve always enjoyed drafting up creative and functional solutions to problems which naturally led me to programming.
+                  I like taking an idea, constructing it into a plan, and turning it into something real
+                  that I can use, improve, and learn from.
+                  My interests are spread across web development and ..., and I’m currently
+                  developing my skills across TypeScript, React, Next.js, Python, and SQL. Most of my learning 
+                  happens through building projects, experimenting with new technologies, and fixing things
+                  that break along the way.
+                  Outside of work, I enjoy a variety of sports and board games. I enjoy competition, figuring 
+                  out why things work the way they do, and learning optimal strategies.
+                  My Qualities
+                  Creative. Thoughtful. ...
+                  I’m currently focused on improving my technical skills
+                  and looking forward to seeing where it takes me.
+                </p>
+              </div>
             </div>
             <div className="bio-page-content bio-page-img-container">
               <div className="bio-track">

@@ -200,22 +200,27 @@ body {
 
 .bio-page-container{
   display:flex;
-  gap: 15rem;
+  gap: 10rem;
+  height:100%;
 }
 
 .bio-page-text-container{
   flex:6;
+  font-size:1.2rem;
 }
 
 .bio-page-text-container p{
-  padding: 3rem 3rem;
+  padding: 2rem 2rem;
   border-top: 2px solid var(--text-faint);
   border-bottom: 2px solid var(--text-faint);
 }
 
 .bio-page-img-container {
   flex: 4;
-  height: calc(40vh);
+
+  position: relative;          /* the track is positioned inside this */
+  align-self: stretch;         /* match the height of the tallest sibling */
+
   overflow: hidden;
   /* images fade in at the top and out at the bottom */
   mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
@@ -223,10 +228,14 @@ body {
 }
 
 .bio-track {
+  position: absolute;          /* out of the flow, so it can't stretch the container */
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: bio-scroll 20s linear infinite;
+  animation: bio-scroll 25s linear infinite;
 }
 
 .bio-track img {
