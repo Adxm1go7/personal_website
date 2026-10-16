@@ -331,71 +331,49 @@ body {
   .project-card { transition: none; }
 }
 
-/* Fills the page; clusters are placed inside it by % */
-.skills-field {
-  position: absolute;
-  inset: 0;
+.skills-page-title{
+  text-align: center;
 }
 
-.skill-cluster {
-  --size: clamp(13rem, min(24vw, 38vh), 24rem);
-  position: absolute;
-  width: var(--size);
-  height: var(--size);
-  transform: translate(-50%, -50%);  /* x/y refer to the center of the cluster */
-}
 
-/* Lines sit behind everything else */
-.cluster-lines {
-  position: absolute;
-  inset: 0;
+.skills-row {
   width: 100%;
-  height: 100%;
-  overflow: visible;
+  margin-top: clamp(6rem, 14vh, 10rem);   /* clears the title */
+  padding: 0 calc(var(--page-pad) + 2rem) 0 var(--page-pad);  /* keeps clear of the dot nav */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
 }
 
-.cluster-lines line {
-  stroke: rgba(255, 255, 255, 0.2);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
+.skill-box {
+  padding: 1.5rem;
+  border: 1px solid var(--text-faint);
+  border-radius: 12px;
+  background-color: rgba(18, 18, 20, 0.9);   /* hides the stars behind the box */
 }
 
-/* Group name in the middle */
-.cluster-name {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0.5rem 1.1rem;
-  border: 1px solid var(--accent);
-  border-radius: 999px;
-  background: var(--bg);
+.skill-box-title {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--text-faint);
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  font-weight: 500;
   color: var(--accent);
-  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
-  font-weight: 600;
-  white-space: nowrap;
-  z-index: 1;
 }
 
-/* Individual skills */
-.cluster-skills {
+.skill-box-list {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  color: var(--text-muted);
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
 }
 
-.skill {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  padding: 0.3rem 0.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-  background: var(--bg);       /* opaque, so lines appear to end at the label */
-  color: var(--mute_grey);
-  font-size: clamp(0.75rem, 1vw, 0.9rem);
-  white-space: nowrap;
-  z-index: 1;
+@media (max-width: 700px) {
+  .skills-row { grid-template-columns: 1fr; }
 }
-
-
 
 .starfield {
   position: fixed;

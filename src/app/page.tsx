@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react"
 import ProjectsCarousel from "./components/ProjectsCarousel";
-import SkillsField from "./components/SkillsField";
+import { skillGroups } from "./data/skills";
+import SkillBox from "./components/SkillBox";
 
 const PAGES = [
   { id: "home", label: "Home" },
@@ -137,8 +138,13 @@ export default function Home() {
         </section>
 
         <section id="skills" className="page">
-          <h2 className="page-title">Skills</h2>
-          <SkillsField />
+          <h2 className="page-title skills-page-title">Skills</h2>
+
+          <div className="skills-row">
+            {skillGroups.map((group) => (
+              <SkillBox key={group.id} group={group} />
+            ))}
+          </div>
         </section>
       </main>
     </>
