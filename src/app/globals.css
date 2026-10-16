@@ -81,6 +81,10 @@ body {
   color: var(--text);
 }
 
+.projects-page-title{
+  text-align: center;
+}
+
 /* Page layout: nav on top, hero in the middle, socials at the bottom */
 .site-container {
   display: grid;
@@ -277,6 +281,7 @@ body {
 .project-card.active {
   flex: 0 0 34%;
   opacity: 1;
+  border: 1px solid var(--accent-soft);
 }
 
 .project-card.side {
@@ -294,25 +299,6 @@ body {
   color: var(--text-muted);
   font-size: 0.85rem;
 }
-
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 1.75rem;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.carousel-arrow:hover {
-  color: var(--accent);
-}
-
-.carousel-arrow.left  { left: var(--page-pad); }
-.carousel-arrow.right { right: calc(var(--page-pad) + 1.5rem); } /* clears the dot nav */
 
 /* Fills the page; clusters are placed inside it by % */
 .skills-field {

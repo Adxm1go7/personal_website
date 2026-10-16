@@ -132,7 +132,7 @@ export default function Home() {
         </section>
 
         <section id="projects" className="page">
-          <h2 className="page-title">Projects</h2>
+          <h2 className="page-title projects-page-title">Projects</h2>
           <ProjectsCarousel />
         </section>
 

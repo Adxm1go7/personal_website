@@ -16,17 +16,9 @@ export default function ProjectsCarousel() {
 
   return (
     <div className="carousel">
-      <button className="carousel-arrow left" onClick={prev}>
-        ←
-      </button>
-
       <ProjectCard project={projects[wrap(index - 1)]} variant="side" onClick={prev} />
       <ProjectCard project={projects[index]} variant="active" />
       <ProjectCard project={projects[wrap(index + 1)]} variant="side" onClick={next} />
-
-      <button className="carousel-arrow right" onClick={next}>
-        →
-      </button>
     </div>
   );
 }
