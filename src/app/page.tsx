@@ -19,40 +19,7 @@ const bioImages = [
 ];
 
 export default function Home() {
-  const containerRef = useRef<HTMLElement>(null); 
   const [active, setActive] = useState(0);
-
-  // Track which page is currently in view
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = PAGES.findIndex((p) => p.id === entry.target.id);
-            if (index !== -1) setActive(0);
-          }
-        });
-      },
-      { root: container, threshold: 0.6 }
-    );
-
-    PAGES.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const goTo = (id: string) => {
-    const index = PAGES.findIndex((p) => p.id === id);
-    if (index !== -1) setActive(index);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
 
   return(
     <>
@@ -63,10 +30,7 @@ export default function Home() {
               key={id}
               href={`#${id}`}
               className={`nav-link ${active === i ? "active" : ""}`}
-              onClick={(e) => {
-                e.preventDefault();
-                goTo(id);
-              }}
+              onClick={() => setActive(i)}
             >
               {label}
             </a>
@@ -74,7 +38,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="site-snap-container" ref={containerRef}>
+      <main>
         <section id="home" className="page">
           <div className="hero">
             <div className="name-band">

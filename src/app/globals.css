@@ -36,42 +36,40 @@
   --font-mono: var(--font-geist-mono);
 }
 
-html, body {
-  height: 100%;
-  overflow: hidden; /* the snap container scrolls, not the body */
-}
-
 body {
   background: var(--background);
   background-size: 28px 28px;
   color: var(--text);
   font-family: var(--font-main), Helvetica, sans-serif;
   letter-spacing: 0.04rem;
+  min-height: 100%;
+  overflow-x: clip;             /* your 100vw bands are slightly wider than the viewport once a scrollbar exists */
 }
 
-.snap-container {
-  height: 100svh;
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  overscroll-behavior: none;
-  scrollbar-width: none;       /* hide scrollbar (Firefox) */
+html {
+  scroll-behavior: smooth;      /* nav links and dots glide to their section */
+  scroll-padding-top: 4rem;     /* stops the fixed navbar covering the top of a section */
+  scrollbar-width: auto;
+  scrollbar-color: var(--text-faint) transparent;
 }
 
-.snap-container::-webkit-scrollbar {
-  display: none;               /* hide scrollbar (Chrome/Safari) */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
+
+
 
 .page {
   position: relative;
   height: 100svh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;    /* one page per swipe/scroll, no skipping */
   padding: 6vw;
   color: var(--text-muted);
 }
 
 .page-title{
+  position: static;
+
   margin-top:9vh;
   margin-bottom:6vh;
   font-size: clamp(3rem, 5vw, 6.5rem);
@@ -99,6 +97,7 @@ body {
   z-index: 10;
   width: 100%;
   padding: clamp(1.25rem, 3vw, 2.5rem);
+  background: linear-gradient(to bottom, var(--bg) 50%, transparent);
 }
 
 

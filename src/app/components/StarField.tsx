@@ -156,9 +156,12 @@ export default function StarField() {
       raf = requestAnimationFrame(loop);
     }
 
+    let lastWidth = window.innerWidth;
+
     const onResize = () => {
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
       build();
-      if (reduceMotion) draw(0);
     };
     window.addEventListener("resize", onResize);
 
