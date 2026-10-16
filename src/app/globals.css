@@ -296,14 +296,32 @@ body {
   pointer-events: auto;
   border-color: var(--accent-soft);
   z-index: 2;
+
+  /* border-color is near-instant, so the yellow is there from the click */
+  transition:
+    transform 0.6s cubic-bezier(0.22, 0.8, 0.3, 1),
+    opacity 0.6s ease,
+    border-color 0.1s ease;
 }
 
 .project-card.side {
   opacity: 0.3;
   cursor: pointer;
   pointer-events: auto;
+
+  /* quicker colour changes so the hover feels responsive */
+  transition:
+    transform 0.6s cubic-bezier(0.22, 0.8, 0.3, 1),
+    opacity 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
 }
 
+.project-card.side:hover {
+  opacity: 0.6;
+  border-color: var(--accent-soft);
+  background-color: color-mix(in srgb, var(--accent-soft) 8%, rgb(18, 18, 20));
+}
 /* A card wrapping round to the other side jumps instead of sweeping across */
 .project-card.teleport {
   transition: none;
