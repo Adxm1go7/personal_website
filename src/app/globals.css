@@ -17,8 +17,6 @@
   --font-muted: gray;
   --accent2: orange;
 
-  --bg: #121214;
-
   --text: #F6F3EA;          /* headings, your name: warm white */
   --text-muted: #A9A79E;    /* descriptions, nav links, socials */
   --text-faint: #6F6D66;    /* dividers, hints, disabled (decorative only) */
@@ -26,7 +24,13 @@
   --accent: #FFDF00;        /* your exact yellow: role, active states, hover */
   --accent-soft: #E8C94A;   /* optional calmer yellow for small text or borders */ 
 
-}
+  --bg-base: #121214;
+  --scroll: 0;
+  /* 0 = original colour, 1 = 75% of the way to black */
+  --bg: color-mix(in srgb, #000 calc(var(--scroll) * 75%), var(--bg-base));
+
+  --fade-height: clamp(5rem, 16vh, 9rem);
+  }
 
 @theme inline {
   --color-background: var(--background);
@@ -37,7 +41,7 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--bg);
   background-size: 28px 28px;
   color: var(--text);
   font-family: var(--font-main), Helvetica, sans-serif;
@@ -45,6 +49,19 @@ body {
   min-height: 100%;
   overflow-x: clip;             /* your 100vw bands are slightly wider than the viewport once a scrollbar exists */
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--fade-height);
+  z-index: 5;                  /* above content, below the navbar and dots (z-index 10) */
+  pointer-events: none;
+  background: linear-gradient(to bottom, var(--bg), transparent);
+}
+
 
 html {
   scroll-behavior: smooth;      /* nav links and dots glide to their section */
@@ -69,6 +86,7 @@ html {
 
 .page-title{
   position: static;
+  text-align: center;
 
   margin-top:9vh;
   margin-bottom:6vh;
@@ -89,9 +107,7 @@ html {
   filter: brightness(0.7);
 }
 
-.projects-page-title{
-  text-align: center;
-}
+
 
 /* Page layout: nav on top, hero in the middle, socials at the bottom */
 .site-container {
@@ -338,10 +354,6 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   .project-card { transition: none; }
-}
-
-.skills-page-title{
-  text-align: center;
 }
 
 

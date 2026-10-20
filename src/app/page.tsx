@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react";
 import ProjectsCarousel from "./components/ProjectsCarousel";
 import { skillGroups } from "./data/skills";
 import SkillBox from "./components/SkillBox";
@@ -14,14 +14,52 @@ const PAGES = [
 
 const bioImages = [
   { src: "/subaru_sketch.webp", alt: "Picture of a car (WRX STI)" },
-  { src: "/catan.webp", alt: "Picture of a car (WRX STI)" },
+  { src: "/catan.webp", alt: "Board game (Catan)" },
   { src: "/subaru_sketch.webp", alt: "Picture of a car (WRX STI)" },
 ];
 
 export default function Home() {
   const [active, setActive] = useState(0);
 
-  return(
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = PAGES.findIndex((p) => p.id === entry.target.id);
+            if (index !== -1) setActive(index);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" } // a thin line across the middle of the screen
+    );
+
+    PAGES.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+
+  useEffect(() => {
+    const update = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? window.scrollY / max : 0;
+      document.documentElement.style.setProperty("--scroll", progress.toFixed(3));
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  return (
     <>
       <header className="site-header">
         <nav className="navbar" aria-label="Main">
@@ -30,6 +68,7 @@ export default function Home() {
               key={id}
               href={`#${id}`}
               className={`nav-link ${active === i ? "active" : ""}`}
+              aria-current={active === i ? "page" : undefined}
               onClick={() => setActive(i)}
             >
               {label}
@@ -52,10 +91,10 @@ export default function Home() {
 
           <div className="contact-container">
             <a href="#" className="contact-link">
-              <img className="link-icon" src="./linkedin-icon.png" alt="LinkedIn"></img>
+              <img className="link-icon" src="/linkedin-icon.png" alt="LinkedIn" />
             </a>
             <a href="#" className="contact-link">
-              <img className="link-icon" src="./github-icon2.webp" alt="Github"></img>
+              <img className="link-icon" src="/github-icon2.webp" alt="GitHub" />
             </a>
           </div>
         </section>
@@ -66,16 +105,15 @@ export default function Home() {
               <h2 className="page-title">About Me</h2>
               <div>
                 <p>
-                  Hey, I’m Adam - an aspiring Software Engineer based in London.<br></br>
-
+                  Hey, I’m Adam - an aspiring Software Engineer based in London.<br />
                   I’ve always enjoyed drafting up creative and functional solutions to problems which naturally led me to programming.
                   I like taking an idea, constructing it into a plan, and turning it into something real
                   that I can use, improve, and learn from.
                   My interests are spread across web development and ..., and I’m currently
-                  developing my skills across TypeScript, React, Next.js, Python, and SQL. Most of my learning 
+                  developing my skills across TypeScript, React, Next.js, Python, and SQL. Most of my learning
                   happens through building projects, experimenting with new technologies, and fixing things
                   that break along the way.
-                  Outside of work, I enjoy a variety of sports and board games. I enjoy competition, figuring 
+                  Outside of work, I enjoy a variety of sports and board games. I enjoy competition, figuring
                   out why things work the way they do, and learning optimal strategies.
                   My Qualities
                   Creative. Thoughtful. ...
@@ -100,12 +138,12 @@ export default function Home() {
         </section>
 
         <section id="projects" className="page">
-          <h2 className="page-title projects-page-title">Projects</h2>
+          <h2 className="page-title">Projects</h2>
           <ProjectsCarousel />
         </section>
 
         <section id="skills" className="page">
-          <h2 className="page-title skills-page-title">Skills</h2>
+          <h2 className="page-title">Skills</h2>
 
           <div className="skills-row">
             {skillGroups.map((group) => (
@@ -115,5 +153,5 @@ export default function Home() {
         </section>
       </main>
     </>
-  )
+  );
 }
