@@ -103,7 +103,7 @@ html {
 }
 
 .link-icon{
-  max-width:70px;
+  max-width:4rem;
   filter: brightness(0.7);
 }
 
@@ -146,6 +146,7 @@ html {
   align-items: center;
   gap: 0.6rem;
   font-size: 0.95rem;
+  flex-direction: column;
 }
 
 .contact-link{
@@ -207,7 +208,7 @@ html {
 
 .front-page-description {
   margin-top: 1.25rem;
-  max-width: 70ch;
+  max-width: 76ch;
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   line-height: 1.6;
   color: var(--text-muted);
@@ -238,7 +239,7 @@ html {
   font-size:1.2rem;
 }
 
-.bio-page-text-container p{
+.bio-all{
   padding: 2rem 2rem;
   border-top: 2px solid var(--text-faint);
   border-bottom: 2px solid var(--text-faint);
@@ -257,22 +258,31 @@ html {
 }
 
 .bio-track {
-  position: absolute;          /* out of the flow, so it can't stretch the container */
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: bio-scroll 25s linear infinite;
+  animation: bio-scroll 45s linear infinite;
+
+  --img-width: 22rem;    /* circle diameter */
+  --img-gap: 10rem;       /* space between images */
+  --img-border: 0px;
+  --img-border-color: var(--text);
 }
 
 .bio-track img {
-  width: min(100%, 22rem);
-  height: auto;
-  margin-bottom: 2rem;   /* margin, not gap, so the loop distance is exact */
+  width: min(100%, var(--img-width));
+  aspect-ratio: 1;                 /* same shape for every image */
+  object-fit: cover;               /* fills the circle; use contain to avoid cropping */
+  flex-shrink: 0;                  /* stops flexbox squashing the circles */
+  margin-bottom: var(--img-gap);   /* margin, not gap, so the loop distance stays exact */
+  border: var(--img-border) solid var(--img-border-color);
+  border-radius: 50%;              /* fully round */
+  padding: 0.75rem;
 }
-
 @keyframes bio-scroll {
   from { transform: translateY(-50%); }
   to   { transform: translateY(0); }

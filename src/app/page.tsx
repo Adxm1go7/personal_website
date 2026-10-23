@@ -13,9 +13,11 @@ const PAGES = [
 ];
 
 const bioImages = [
-  { src: "/subaru_sketch.webp", alt: "Picture of a car (WRX STI)" },
-  { src: "/catan.webp", alt: "Board game (Catan)" },
-  { src: "/subaru_sketch.webp", alt: "Picture of a car (WRX STI)" },
+  { src: "/software-testing.png", alt: "Image of Programming" },
+  { src: "/subaru.jpg", alt: "Image of a Subaru WRX STI" },
+  { src: "/catan_transparent.png", alt: "Image of Catan (Board Game)" },
+  { src: "/volleyball_transparent.png", alt: "Image of a Volleyball" },
+  { src: "/judo11.png", alt: "Image of bowing in Judo" }
 ];
 
 export default function Home() {
@@ -85,7 +87,7 @@ export default function Home() {
             </div>
             <h2 className="role">Full-Stack Developer</h2>
             <p className="front-page-description">
-              This is going to be a short 2 line description that says something
+              I build web applications from idea to deployment, with a focus on clean, reliable code.
             </p>
           </div>
 
@@ -103,22 +105,24 @@ export default function Home() {
           <div className="bio-page-container">
             <div className="bio-page-content bio-page-text-container">
               <h2 className="page-title">About Me</h2>
-              <div>
+              <div className="bio-all">
                 <p>
-                  Hey, I’m Adam - an aspiring Software Engineer based in London.<br />
-                  I’ve always enjoyed drafting up creative and functional solutions to problems which naturally led me to programming.
-                  I like taking an idea, constructing it into a plan, and turning it into something real
+                  Hey, I’m Adam, an aspiring Software Engineer based in London.
+                </p>
+                <p>
+                  I’ve always enjoyed drafting up creative and functional solutions to problems, which naturally led me to programming.
+                  I like taking an idea, turning it into a detailed plan, and turning it into something real
                   that I can use, improve, and learn from.
-                  My interests are spread across web development and ..., and I’m currently
-                  developing my skills across TypeScript, React, Next.js, Python, and SQL. Most of my learning
-                  happens through building projects, experimenting with new technologies, and fixing things
+                </p>
+                <p>
+                  I’m interested in web development, backend systems, DevOps and software testing. 
+                  I’m currently exploring how AI can be used both as a development tool and as a feature in the applications I build.
+                  Most of my learning happens through building projects, experimenting with new technologies, and fixing things
                   that break along the way.
-                  Outside of work, I enjoy a variety of sports and board games. I enjoy competition, figuring
+                </p>
+                <p>
+                  Outside of work, I enjoy a variety of sports, board games and car-related activities. I also like competition, figuring
                   out why things work the way they do, and learning optimal strategies.
-                  My Qualities
-                  Creative. Thoughtful. ...
-                  I’m currently focused on improving my technical skills
-                  and looking forward to seeing where it takes me.
                 </p>
               </div>
             </div>
