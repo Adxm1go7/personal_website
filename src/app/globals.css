@@ -63,6 +63,9 @@ html {
   min-height: 100svh;
   padding: 6vw;
   color: var(--text-muted);
+  /* off-screen carousel cards and the 100vw name band must not widen the page;
+     mobile browsers ignore overflow on body and zoom out to fit them instead */
+  overflow-x: clip;
 }
 
 /* the home screen stays exactly one screen tall so the hero can centre in it */
