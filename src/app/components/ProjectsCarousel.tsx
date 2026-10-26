@@ -1,32 +1,26 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard";
 
 export default function ProjectsCarousel() {
-  const [index, setIndex] = useState(0);
+  // Keep the previous index so a card that wraps from one side to the other can jump instead of sliding across
+  const [{ index, prevIndex }, setPosition] = useState({ index: 0, prevIndex: 0 });
   const total = projects.length;
   const half = Math.floor(total / 2);
 
-  const prev = () => setIndex((i) => (i - 1 + total) % total);
-  const next = () => setIndex((i) => (i + 1) % total);
+  const prev = () => setPosition((p) => ({ index: (p.index - 1 + total) % total, prevIndex: p.index }));
+  const next = () => setPosition((p) => ({ index: (p.index + 1) % total, prevIndex: p.index }));
 
   // Shortest signed distance from the active card: ..., -1, 0, 1, ...
-  const offsets = projects.map((_, i) => ((i - index + total + half) % total) - half);
-
-  // Remember last offsets so a card that wraps from one side to the other can jump instead of sliding across
-  const prevOffsets = useRef<number[]>([]);
-  useEffect(() => {
-    prevOffsets.current = offsets;
-  });
+  const offsetFrom = (active: number, i: number) => ((i - active + total + half) % total) - half;
 
   return (
     <div className="carousel">
       {projects.map((project, i) => {
-        const offset = offsets[i];
-        const last = prevOffsets.current[i];
-        const teleport = last !== undefined && Math.abs(offset - last) > 1;
+        const offset = offsetFrom(index, i);
+        const teleport = Math.abs(offset - offsetFrom(prevIndex, i)) > 1;
 
         return (
           <ProjectCard
