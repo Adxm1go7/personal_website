@@ -95,7 +95,7 @@ export default function Home() {
             <a href="https://www.linkedin.com/in/adamornoch" className="contact-link">
               <img className="link-icon" src="/linkedin-icon.png" alt="LinkedIn" />
             </a>
-            <a href="#" className="contact-link">
+            <a href="https://github.com/Adxm1go7" className="contact-link">
               <img className="link-icon" src="/github-icon2.webp" alt="GitHub" />
             </a>
           </div>

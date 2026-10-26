@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Access
 
-## Getting Started
+https://www.adamornoch.com/
 
-First, run the development server:
+# Adam Ornoch: Personal Website
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+My portfolio site. It's a single scrolling page with four sections: Home, About Me, Projects and Skills. There's an animated starfield in the background, and the layout adapts to phones.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Next.js 16](https://nextjs.org) (App Router) with the React Compiler
+- React 19
+- TypeScript
+- Tailwind CSS v4. Most styles are hand-written in `globals.css`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing content
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| What                            | Where                                        |
+| ------------------------------- | -------------------------------------------- |
+| Projects                        | `src/app/data/projects.ts`                   |
+| Skills                          | `src/app/data/skills.ts`                     |
+| Home and About Me text, links   | `src/app/page.tsx`                           |
+| Colours and layout              | `src/app/globals.css` (variables in `:root`) |
+| Images                          | `public/`                                    |
