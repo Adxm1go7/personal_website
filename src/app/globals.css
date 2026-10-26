@@ -57,11 +57,17 @@ html {
 
 
 
+/* at least one screen tall, but grows if the content needs more room (e.g. bio text in a narrow window) */
 .page {
   position: relative;
-  height: 100svh;
+  min-height: 100svh;
   padding: 6vw;
   color: var(--text-muted);
+}
+
+/* the home screen stays exactly one screen tall so the hero can centre in it */
+#home.page {
+  height: 100svh;
 }
 
 .page-title{
@@ -184,8 +190,8 @@ html {
 
 .bio-page-container{
   display:flex;
-  gap: 10rem;
-  height:100%;
+  gap: clamp(2rem, 8vw, 10rem);
+  min-height: calc(100svh - 12vw);   /* fills the screen inside the page padding, so the images column runs full height */
 }
 
 .bio-page-text-container{
@@ -310,10 +316,13 @@ html {
     background-color 0.25s ease;
 }
 
-.project-card.side:hover {
-  opacity: 0.6;
-  border-color: var(--accent-soft);
-  background-color: color-mix(in srgb, var(--accent-soft) 8%, rgb(18, 18, 20));
+/* hover only on devices with a real pointer, so taps don't leave cards stuck highlighted */
+@media (hover: hover) {
+  .project-card.side:hover {
+    opacity: 0.6;
+    border-color: var(--accent-soft);
+    background-color: color-mix(in srgb, var(--accent-soft) 8%, rgb(18, 18, 20));
+  }
 }
 /* A card wrapping round to the other side jumps instead of sweeping across */
 .project-card.teleport {
@@ -448,4 +457,127 @@ html {
   height: 100%;
   z-index: -1;           /* above the body background, below all content */
   pointer-events: none;  /* never blocks clicks or scrolling */
+}
+
+
+/* ---- Phones and small tablets ---- */
+@media (max-width: 768px) {
+  .page {
+    padding: 5rem 1.25rem 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2.25rem, 11vw, 3rem);
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  .site-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .navbar {
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+
+  /* Home: name fits on one line, socials move to a centred row at the bottom */
+  .name {
+    font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+
+  .role {
+    font-size: 1.25rem;
+    padding-top: 1.5rem;
+  }
+
+  .front-page-description {
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+
+  .contact-container {
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .link-icon {
+    max-width: 2.75rem;
+  }
+
+  /* About: text first, then the images scroll sideways underneath */
+  .bio-page-container {
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 0;                  /* stacked, so the image strip sits right under the text */
+  }
+
+  .bio-page-text-container {
+    font-size: 1rem;
+  }
+
+  .bio-all {
+    padding: 1.25rem 0;
+  }
+
+  .bio-all p + p {
+    margin-top: 1rem;
+  }
+
+  .bio-page-img-container {
+    flex: none;
+    height: 11rem;
+    mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+  }
+
+  .bio-track {
+    right: auto;
+    bottom: 0;
+    width: max-content;
+    flex-direction: row;
+    animation-name: bio-scroll-x;
+    --img-width: 10rem;
+    --img-gap: 2.5rem;
+  }
+
+  .bio-track img {
+    width: var(--img-width);        /* % widths don't resolve inside a max-content track */
+    margin-bottom: 0;
+    margin-right: var(--img-gap);   /* margin, not gap, so the loop distance stays exact */
+  }
+
+  /* Projects: one wide card at a time, swipe or tap the edges to move */
+  .carousel {
+    height: clamp(24rem, 65svh, 32rem);
+    margin-top: 0;
+    touch-action: pan-y;            /* the page still scrolls vertically, horizontal swipes go to the carousel */
+  }
+
+  .project-card {
+    width: 85%;
+    padding: 1.25rem;
+  }
+
+  .project-description {
+    padding-right: 0.5rem;
+  }
+
+  /* Skills */
+  .skills-row {
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
+@keyframes bio-scroll-x {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }

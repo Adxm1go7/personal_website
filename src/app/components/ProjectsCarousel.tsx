@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type TouchEvent } from "react";
 import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard";
 
@@ -16,8 +16,24 @@ export default function ProjectsCarousel() {
   // Shortest signed distance from the active card: ..., -1, 0, 1, ...
   const offsetFrom = (active: number, i: number) => ((i - active + total + half) % total) - half;
 
+  // Swipe left/right on touch screens
+  const touchStartX = useRef<number | null>(null);
+  const SWIPE_MIN_PX = 40;
+
+  const onTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+    if (dx <= -SWIPE_MIN_PX) next();
+    else if (dx >= SWIPE_MIN_PX) prev();
+  };
+
   return (
-    <div className="carousel">
+    <div className="carousel" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       {projects.map((project, i) => {
         const offset = offsetFrom(index, i);
         const teleport = Math.abs(offset - offsetFrom(prevIndex, i)) > 1;
