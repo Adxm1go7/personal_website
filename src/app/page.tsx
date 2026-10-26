@@ -92,7 +92,7 @@ export default function Home() {
           </div>
 
           <div className="contact-container">
-            <a href="#" className="contact-link">
+            <a href="https://www.linkedin.com/in/adamornoch" className="contact-link">
               <img className="link-icon" src="/linkedin-icon.png" alt="LinkedIn" />
             </a>
             <a href="#" className="contact-link">

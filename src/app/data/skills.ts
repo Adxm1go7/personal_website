@@ -8,16 +8,17 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "languages",
     title: "Languages",
-    items: ["TypeScript", "JavaScript", "Python", "SQL", "HTML/CSS"],
-  },
-  {
-    id: "frameworks",
-    title: "Frameworks",
-    items: ["React", "Next.js", "Node.js", "Express", "Tailwind"],
+    items: ["Python", "TypeScript", "JavaScript",  "C#", "HTML/CSS", "SQL"],
   },
   {
     id: "tools",
     title: "Tools",
-    items: ["Git", "Docker", "Linux", "Figma", "PostgreSQL"],
+    items: ["Git", "Linux", "React", "Unity"],
   },
+  {
+    id: "computer-science",
+    title: "Computer Science",
+    items: ["Advanced Algorithms", "Dynamic Programming", "Computer Architecture", "SQL Databases", "Version Control", "Object-Oriented Design"],
+  },
+  
 ];

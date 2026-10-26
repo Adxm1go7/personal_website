@@ -471,7 +471,7 @@ html {
   border-bottom: 1px solid var(--text-faint);
   font-size: clamp(1.1rem, 1.6vw, 1.4rem);
   font-weight: 500;
-  color: var(--accent);
+  color: var(--accent-soft);
 }
 
 .skill-box-list {
